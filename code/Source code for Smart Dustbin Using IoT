@@ -1,1 +1,53 @@
+/*
+ Smart Dustbin Using IoT
+ Author: Yash Bachhav
+ Description: Detects garbage level using ultrasonic sensor
+*/
+
+#define TRIG_PIN 9
+#define ECHO_PIN 10
+#define LED_PIN 8
+#define BUZZER_PIN 7
+
+long duration;
+int distance;
+
+void setup() {
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Trigger ultrasonic sensor
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  // Read echo time
+  duration = pulseIn(ECHO_PIN, HIGH);
+
+  // Calculate distance (cm)
+  distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // If dustbin is almost full
+  if (distance < 10) {
+    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(BUZZER_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+    digitalWrite(BUZZER_PIN, LOW);
+  }
+
+  delay(1000);
+}
 
