@@ -39,7 +39,20 @@ The source code for this project is written in basic embedded C / Arduino progra
 ---
 
 ## 🖼️ Project Images
-Project images such as components, connection diagram, and final working model are available in the `images` folder.
+## 🖼️ Project Images
+
+### 🔹 Components Used
+![Components](images/components.jpg)
+
+### 🔹 Connection / Circuit Diagram
+![Connection Diagram](images/connection_diagram.png)
+
+### 🔹 Final Working Model
+![Final Model](images/final_working_model.jpg)
+
+### 🔹 Testing
+![Connection Diagram](images/testing.png)
+
 
 ---
 
